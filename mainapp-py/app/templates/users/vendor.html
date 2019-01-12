@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Welcome to DiagHard!
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% if model.vendors %}
+
+                    <div class="list-group">
+                        {% for vendor in model.vendors %}
+                            <a class="list-group-item list-group-item-action{% if vendor.id == model.active %} active{% endif %}"
+                               href="/users/vendor?id={{ vendor.id }}">
+                                {{ vendor.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-9">
+                {% if model.active %}
+                    <a href="/skills/create?vendorId={{ model.active }}">
+                        <button type="button" class="btn btn-info">Create Skill</button>
+                    </a>
+                    <br /><br />
+                {% endif %}
+
+                {% if model.local_skills %}
+                    <h4 class="text-muted">Locally saved skills</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Last Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for skill in model.local_skills %}
+                                <tr>
+                                    <td><a href="/skills/edit?skillId={{ skill.id }}">{{ skill.name }}</a></td>
+                                    <td>{{ skill.last_updated }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+
+
+                {% if model.skills %}
+                    <h4 class="text-muted">Existing skills at AWS</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Last Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for skill in model.skills %}
+                                <tr>
+                                    <td>{{ skill.name }}</td>
+                                    <td>{{ skill.last_updated }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

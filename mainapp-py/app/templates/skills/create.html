@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Create skill - DiagHard!
+{% endblock %}
+
+{% block content %}
+<p>{{ model.vendor.name }}</p>
+
+<div id="clientside">
+
+</div>
+
+{% endblock %}
+
+
+{% block endscripts %}
+<script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+{% endblock %}

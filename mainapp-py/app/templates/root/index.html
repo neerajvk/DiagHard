@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Welcome to DiagHard!
+{% endblock %}
+
+{% block content %}
+
+    {% if current_user.is_authenticated %}
+        <p>Authenticated, {{ current_user.profile_name }}</p>
+    {% else %}
+        <b>NOT authenticated, bro!</b>
+    {% endif %}
+
+{% endblock %}

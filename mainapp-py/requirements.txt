@@ -1,0 +1,11 @@
+Flask
+Flask-WTF
+Flask-Login
+Flask-DebugToolbar
+Blueprint
+pytz
+pendulum
+pycountry
+requests
+mongoengine
+nameparser
